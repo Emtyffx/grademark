@@ -35,7 +35,7 @@ export default async function RootLayout({
       >
         <AuthProvider user={serializeUser(currentSession?.user)}>
           <ThemeProvider enableSystem defaultTheme="dark" attribute="class">
-            {currentSession?.user.role == "admin" ? admin : children}
+            {children}
           </ThemeProvider>
         </AuthProvider>
       </body>

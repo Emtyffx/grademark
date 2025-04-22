@@ -18,7 +18,7 @@ export function Client() {
   return (
     <>
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-        <div className="bg-background rounded-xl border p-5 space-y-5">
+        <div className="bg-background rounded-xl border p-5 space-y-5 max-w-sm w-full">
           <h1 className="text-2xl font-semibold tracking-tight">Логін</h1>
           <LoginForm />
         </div>
@@ -36,7 +36,7 @@ function LoginForm() {
     },
   });
 
-  const onSubmit = async (data) => {};
+  const onSubmit = async (data: z.infer<typeof loginValidator>) => {};
 
   return (
     <>

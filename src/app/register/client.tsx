@@ -19,7 +19,7 @@ export function Client() {
   return (
     <>
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-        <div className="bg-background rounded-xl border p-5 space-y-5">
+        <div className="bg-background rounded-xl border p-5 space-y-5 w-full max-w-sm">
           <h1 className="text-2xl font-semibold tracking-tight">Реєстрація</h1>
           <RegisterForm />
         </div>

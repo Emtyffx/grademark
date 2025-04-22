@@ -1,8 +1,10 @@
-"use client";
-import { useAuth } from "@/lib/context/AuthContext";
-import Image from "next/image";
+import { getCurrentSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  const user = useAuth();
-  return <div>Hello, {user?.name}</div>;
+export default async function Home() {
+  const session = await getCurrentSession();
+  if (session) {
+    return redirect("/home");
+  }
+  return <div>Hello</div>;
 }
