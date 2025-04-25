@@ -95,7 +95,7 @@ export function DateTimePicker({
           ) : (
             <>
               <CalendarIcon className="mr-2 h-4 w-4" />
-              <span>Оберіть дату і час</span>
+              <span>Select date and time</span>
             </>
           )}
         </Button>
@@ -109,11 +109,11 @@ export function DateTimePicker({
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="date">
                 <CalendarIcon className="mr-2 h-4 w-4" />
-                Дата
+                Date
               </TabsTrigger>
               <TabsTrigger value="time">
                 <Clock className="mr-2 h-4 w-4" />
-                Час
+                Time
               </TabsTrigger>
             </TabsList>
           </div>
@@ -128,7 +128,8 @@ export function DateTimePicker({
           <TabsContent value="time" className="p-3">
             <div className="flex items-center justify-center space-x-2">
               <div className="grid gap-1 text-center">
-                <div className="text-sm font-medium">Години</div>
+                {" "}
+                <div className="text-sm font-medium">Hours</div>
                 <Select
                   value={date ? date.getHours().toString() : undefined}
                   onValueChange={(value) => handleTimeChange(value, "hours")}
@@ -146,7 +147,7 @@ export function DateTimePicker({
                 </Select>
               </div>
               <div className="grid gap-1 text-center">
-                <div className="text-sm font-medium">Хвилини</div>
+                <div className="text-sm font-medium">Minutes</div>
                 <Select
                   value={date ? date.getMinutes().toString() : undefined}
                   onValueChange={(value) => handleTimeChange(value, "minutes")}

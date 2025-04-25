@@ -7,5 +7,9 @@ export default async function Layout({
   children: React.ReactNode;
   admin: React.ReactNode;
 }) {
-  return <>{admin}</>;
+  const session = await getCurrentSession();
+  if (session?.user.role == "admin") {
+    return admin;
+  }
+  return children;
 }

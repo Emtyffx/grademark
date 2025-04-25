@@ -20,7 +20,7 @@ export function Client() {
     <>
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
         <div className="bg-background rounded-xl border p-5 space-y-5 w-full max-w-sm">
-          <h1 className="text-2xl font-semibold tracking-tight">Реєстрація</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Register</h1>
           <RegisterForm />
         </div>
       </div>
@@ -70,7 +70,7 @@ function RegisterForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Ім'я</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input placeholder={"Іванов Іван Іванович"} {...field} />
                 </FormControl>
@@ -83,7 +83,7 @@ function RegisterForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Пароль</FormLabel>
+                <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder={"********"} {...field} />
                 </FormControl>
@@ -94,7 +94,7 @@ function RegisterForm() {
           <FormMessage />
 
           <Button type="submit" className="w-full">
-            Увійти
+            Register
           </Button>
         </form>
       </Form>

@@ -12,7 +12,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-  SidebarTrigger,
 } from "./ui/sidebar";
 import Link from "next/link";
 import { AdminNavbar } from "./AdminNavbar";
@@ -27,6 +26,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { useAuth } from "@/lib/context/AuthContext";
+import { logout } from "@/lib/globalActions";
 
 export function AdminSidebar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -44,9 +44,9 @@ export function AdminSidebar({ children }: { children: React.ReactNode }) {
                     asChild
                     isActive={pathname === "/home/admins"}
                   >
-                    <Link href="#">
+                    <Link href="/home/users">
                       <User />
-                      Адміністратори
+                      Users
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -55,9 +55,9 @@ export function AdminSidebar({ children }: { children: React.ReactNode }) {
                     asChild
                     isActive={pathname === "/home/schools"}
                   >
-                    <Link href="#">
+                    <Link href="/home/schools">
                       <School />
-                      Школи
+                      Schools
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -70,13 +70,16 @@ export function AdminSidebar({ children }: { children: React.ReactNode }) {
             <SidebarMenuItem>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Avatar>
-                    <AvatarFallback>
-                      <User />
-                    </AvatarFallback>
-                  </Avatar>
-                  {user!!.name}
-                </DropdownMenuTrigger>{" "}
+                  <SidebarMenuButton>
+                    <Avatar>
+                      <AvatarFallback>
+                        <User />
+                      </AvatarFallback>
+                    </Avatar>
+                    <span>{user!!.name}</span>
+                    <ChevronUp className="ml-auto" />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
                 <DropdownMenuContent
                   side="top"
                   className="w-[--radix-popper-anchor-width]"
@@ -87,7 +90,7 @@ export function AdminSidebar({ children }: { children: React.ReactNode }) {
                   <DropdownMenuItem>
                     <span>Billing</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={async () => logout()}>
                     <span>Sign out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

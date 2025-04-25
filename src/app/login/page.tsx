@@ -4,6 +4,6 @@ import { Client } from "./client";
 
 export default async function LoginPage() {
   const session = await getCurrentSession();
-  if (!session) return redirect("/");
+  if (session) return redirect("/");
   return <Client />;
 }

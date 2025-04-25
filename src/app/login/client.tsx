@@ -13,13 +13,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { loginValidator } from "./validators";
+import { login } from "./actions";
 
 export function Client() {
   return (
     <>
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
         <div className="bg-background rounded-xl border p-5 space-y-5 max-w-sm w-full">
-          <h1 className="text-2xl font-semibold tracking-tight">Логін</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Login</h1>
           <LoginForm />
         </div>
       </div>
@@ -36,7 +37,14 @@ function LoginForm() {
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof loginValidator>) => {};
+  const onSubmit = async (data: z.infer<typeof loginValidator>) => {
+    const result = await login(data);
+    if (result && result.error) {
+      form.setError("root", {
+        message: result.message,
+      });
+    }
+  };
 
   return (
     <>
@@ -60,7 +68,7 @@ function LoginForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Пароль</FormLabel>
+                <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder={"********"} {...field} />
                 </FormControl>
@@ -68,9 +76,12 @@ function LoginForm() {
               </FormItem>
             )}
           />
+          {form.formState.errors.root && (
+            <p>{form.formState.errors.root.message}</p>
+          )}
 
           <Button type="submit" className="w-full">
-            Увійти
+            Login
           </Button>
         </form>
       </Form>
