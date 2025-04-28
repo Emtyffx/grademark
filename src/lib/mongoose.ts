@@ -12,7 +12,7 @@ export async function connectToDatabase(url: string | null = null) {
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(url || env.MONGO_URI, {
-      bufferCommands: false,
+      bufferCommands: true,
     });
   }
 
