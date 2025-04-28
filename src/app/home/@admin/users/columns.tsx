@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
 
 export interface DisplayUser {
+  id: string;
   email: string;
   name: string;
   role: string;
@@ -25,7 +26,6 @@ export const columns: ColumnDef<DisplayUser>[] = [
       filterValue.includes(row.getValue(columnId)),
     cell: ({ row }) => {
       const role = row.getValue("role") as string;
-      console.log(role);
       return (
         <Badge variant={role === "admin" ? "destructive" : "secondary"}>
           {role}

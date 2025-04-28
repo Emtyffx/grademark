@@ -7,11 +7,11 @@ if (!cached) {
   cached = (global as any).mongoose = { conn: null, promise: null };
 }
 
-export async function connectToDatabase() {
+export async function connectToDatabase(url: string | null = null) {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(env.MONGO_URI, {
+    cached.promise = mongoose.connect(url || env.MONGO_URI, {
       bufferCommands: false,
     });
   }
@@ -20,6 +20,7 @@ export async function connectToDatabase() {
 
   import("./models/User");
   import("./models/Session");
+  import("./models/School");
 
   return cached.conn;
 }

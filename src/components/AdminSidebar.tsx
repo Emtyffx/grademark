@@ -36,7 +36,7 @@ export function AdminSidebar({ children }: { children: React.ReactNode }) {
       <Sidebar collapsible="offcanvas">
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Меню</SidebarGroupLabel>
+            <SidebarGroupLabel>Menu</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>

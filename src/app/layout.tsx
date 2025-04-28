@@ -22,10 +22,8 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  admin,
 }: Readonly<{
   children: React.ReactNode;
-  admin: React.ReactNode;
 }>) {
   const currentSession = await getCurrentSession();
   return (
@@ -33,11 +31,11 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider user={serializeUser(currentSession?.user)}>
-          <ThemeProvider enableSystem defaultTheme="dark" attribute="class">
+        <ThemeProvider enableSystem defaultTheme="dark" attribute="class">
+          <AuthProvider user={serializeUser(currentSession?.user)}>
             {children}
-          </ThemeProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
